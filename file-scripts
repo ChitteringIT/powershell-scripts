@@ -1,0 +1,5 @@
+#Get a list of files with the Date Taken attribute and output as a file.
+
+[reflection.assembly]::LoadWithPartialName("System.Drawing")
+$pic = New-Object System.Drawing.Bitmap('C:\PATH\TO\SomePic.jpg')
+$pic.GetPropertyItem(36867).Value
