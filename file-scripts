@@ -1,5 +1,8 @@
-#Get a list of files with the Date Taken attribute and output as a file.
+#Get a list of files with the Date Taken attribute and output as a file. Ended up using BR's EXIFextracter.
 
 [reflection.assembly]::LoadWithPartialName("System.Drawing")
 $pic = New-Object System.Drawing.Bitmap('C:\PATH\TO\SomePic.jpg')
 $pic.GetPropertyItem(36867).Value
+
+# get files in folder, format the output and export to csv
+Get-ChildItem -Path E:\music -Filter *.mp3 -Recurse | Select-Object directoryname, basename, length | Export-Csv -Path c:\fso\music.csv -Encoding ascii -NoTypeInformation
